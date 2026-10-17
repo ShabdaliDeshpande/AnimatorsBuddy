@@ -23,7 +23,7 @@ from src.utils.feedback import (  # noqa: E402
     FEEDBACK_PATH, build_record, load_feedback, save_feedback,
 )
 
-st.set_page_config(page_title="AnimationBuddy", page_icon="🎬", layout="wide")
+st.set_page_config(page_title="Animator'sBuddy", page_icon="🎬", layout="wide")
 
 
 @st.cache_resource(show_spinner="Loading index ...")
@@ -202,7 +202,7 @@ def run_search(pipeline, question, settings):
 
 def main():
     settings = sidebar()
-    st.title("🎬 AnimationBuddy")
+    st.title("🎬 Animator'sBuddy")
     st.caption("Ask animation questions, get answers with the book's own drawings. "
                "Local RAG over *The Animator's Survival Kit*: Gemma-read text, drawing "
                "descriptions and cut-out figures.")
