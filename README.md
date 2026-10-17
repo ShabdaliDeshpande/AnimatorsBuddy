@@ -1,13 +1,13 @@
-# 🎬 AnimationBuddy
+# 🎬 Animator'sBuddy
 
 **Ask an animation question — get an answer grounded in a real animation book, with the book's own drawings as the explanation.**
 
-AnimationBuddy is a fully local, multimodal RAG (retrieval-augmented generation) system.
+Animator'sBuddy is a fully local, multimodal RAG (retrieval-augmented generation) system.
 It was built and tested on Richard Williams' *The Animator's Survival Kit* — a scanned,
 346-page book where most of the teaching lives in hand-drawn sequences and hand-lettered
 notes, not in paragraphs. If a pipeline can handle that, it can handle almost any book.
 
-![AnimationBuddy app view](docs/app_view.png)
+![Animator'sBuddy](docs/banner.png)
 
 > **This repo contains code only.** The book is copyrighted, so no PDF, page scans, OCR
 > text, figures or index are included. Bring your own PDF and rebuild everything with one
@@ -19,7 +19,7 @@ notes, not in paragraphs. If a pipeline can handle that, it can handle almost an
 
 Animation is learned visually. A text-only chatbot can tell you "a double bounce walk
 bounces twice per step" — but an animator needs to *see* the passing position sitting low
-on frame 9. AnimationBuddy answers in words **and** points you to the exact drawings on the
+on frame 9. Animator'sBuddy answers in words **and** points you to the exact drawings on the
 exact pages, so every answer can be checked against the source.
 
 ## What it does
@@ -121,6 +121,19 @@ standalone / answerable / specific / premise-is-false (all ≥ 4 of 5), and near
   penalises *contradictions*, not unsupported claims. Replaced by a stricter G-Eval "groundedness".
 - G-Eval scores 0–10; writing "score 1 if correct" in the steps made correct answers score 0.10.
 - A correctness judge penalised an answer for *rejecting* a false premise — fixed with an explicit rule.
+
+### Baseline results
+
+All 200 questions, `k=5`, 3 page scans sent to the answer model, mean answer time 7.6 s.
+
+| | hit@1 | hit@5 | MRR | correctness | groundedness | answer relevancy | premise correction | abstention |
+|---|---|---|---|---|---|---|---|---|
+| **all** | 0.82 | 0.97 | 0.88 | 0.97 | 0.99 | 0.92 | 1.00 | 1.00 |
+| visual | 0.86 | 0.96 | 0.91 | 1.00 | 1.00 | 0.92 | – | – |
+
+Caveat: the judge is the same local Gemma model that writes the answers, and the golden
+questions were generated from the same OCR text. Treat these as a regression baseline, not
+an independent benchmark. 5 of 200 questions missed retrieval entirely (reference page not in the top 5).
 
 Results of each run are written to `data/eval/runs/<run>/summary.md` (retrieval and generation
 tables per question type, retrieval misses, lowest-scoring answers with the judge's reasons).
