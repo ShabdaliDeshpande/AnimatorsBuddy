@@ -208,3 +208,7 @@ local-only, English. Next on the roadmap:
   (Faber & Faber). Not included in this repository — please buy the book; it's wonderful.
 - Models: Gemma (Google), Qwen3-Embedding (Alibaba), served by Ollama.
 - Libraries: PyMuPDF, OCRmyPDF/Tesseract, Chroma, rank-bm25, Streamlit, DeepEval.
+
+## License
+
+Code: [MIT](LICENSE). The book and anything derived from it (page scans, OCR text, figures) are not covered and are not included.
