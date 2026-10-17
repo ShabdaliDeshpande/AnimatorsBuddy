@@ -1,0 +1,17 @@
+# PDF + OCR
+pymupdf>=1.24
+ocrmypdf>=16.0        # needs the Tesseract binary on PATH (Ghostscript not required)
+numpy>=2.0
+scipy>=1.13           # ink-blob detection for figure cropping
+
+# Retrieval
+chromadb>=1.5
+rank-bm25>=0.2
+
+# App
+streamlit>=1.66
+
+# Evaluation
+deepeval>=4.3
+
+# Models run in Ollama (not pip): gemma4:26b, qwen3-embedding:0.6b

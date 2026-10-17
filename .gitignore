@@ -1,0 +1,24 @@
+# --- Book + everything derived from it (copyrighted; rebuild with `python main.py ingest`)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*/*
+!data/processed/*/.gitkeep
+data/eval/
+/vectorstore/
+
+# --- Runtime
+logs/
+.deepeval/
+*.tmp
+
+# --- Python / tooling
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
+.pytest_cache/
+.streamlit/secrets.toml
+.vscode/
+.idea/
